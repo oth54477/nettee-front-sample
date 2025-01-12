@@ -28,4 +28,8 @@ export const useCreatePost = () => {
 
     redirect(ROUTES.postDetail(post.id));
   };
+
+  return {
+    createPost: useActionState(_createPost, undefined),
+  };
 };
