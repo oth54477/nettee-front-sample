@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 
 import "@workspace/ui/globals.css";
+import NavBar from "@/app/_components/NavBar";
 
 const fontSans = Geist({
   subsets: ["latin"],
@@ -22,9 +23,7 @@ export default function RootLayout({
       <body
         className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased`}
       >
-        <nav className="bg-black mb-8 p-4">
-          <h1 className="text-3xl font-bold text-white">Blog</h1>
-        </nav>
+        <NavBar />
         <main className="max-w-5xl mx-auto p-4">{children}</main>
       </body>
     </html>

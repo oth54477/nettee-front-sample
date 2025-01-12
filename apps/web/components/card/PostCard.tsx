@@ -5,9 +5,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@workspace/ui/components/card";
-import { Post } from "@workspace/ui/types";
+import { Post } from "types";
 
-export const PostCard = ({ post }: { post: Post }) => {
+export default function PostCard({ post }: { post: Post }) {
   return (
     <Card>
       <CardHeader>
@@ -22,4 +22,4 @@ export const PostCard = ({ post }: { post: Post }) => {
       </CardFooter>
     </Card>
   );
-};
+}

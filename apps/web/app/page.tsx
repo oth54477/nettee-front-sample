@@ -1,38 +1,22 @@
-import PageTitle from "@/app/_components/PageTitle";
+import { ROUTES } from "@/lib/constants/routes";
 import Link from "next/link";
-import { CreateButton } from "@/app/_components/CreateButton";
-import { Post } from "@workspace/ui/types";
-import { PostCard } from "@/app/_components/PostCard";
+import PostCreateButton from "@/app/_components/PostCreateButton";
+import PageTitle from "@/components/text/PageTitle";
+import PostCard from "@/components/card/PostCard";
+import { postAPI } from "@/lib/api";
 
-export default function Page() {
-  const posts: Post[] = [
-    {
-      id: "1735801340237",
-      title: "테스트",
-      content: "테스트\r\n테스트",
-      author: "테스트",
-      createdAt: "2025-01-02T07:02:20.237Z",
-      updatedAt: "2025-01-02T13:50:38.431Z",
-    },
-    {
-      id: "1735801340238",
-      title: "테스트",
-      content: "테스트\r\n테스트",
-      author: "테스트",
-      createdAt: "2025-01-02T07:02:20.237Z",
-      updatedAt: "2025-01-02T13:50:38.431Z",
-    },
-  ];
+export default async function Page() {
+  const posts = await postAPI.getAll();
 
   return (
     <div className="flex flex-col gap-8">
       <div className="flex justify-between items-center">
-        <PageTitle />
-        <CreateButton />
+        <PageTitle>게시글 목록</PageTitle>
+        <PostCreateButton content={"새 게시글 작성"} />
       </div>
       <div className="flex flex-col gap-4">
         {posts.map((post) => (
-          <Link key={post.id} href={``}>
+          <Link key={post.id} href={ROUTES.postDetail(post.id)}>
             <PostCard post={post} />
           </Link>
         ))}
